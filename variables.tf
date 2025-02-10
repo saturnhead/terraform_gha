@@ -12,7 +12,8 @@ variable "instances" {
       tags = { "Env" : "qa" }
     }
     instance3prod = {
-      tags = { "Env" : "prod" }
+      tags          = { "Env" : "prod" }
+      instance_type = "t3.micro"
     }
   }
 }
