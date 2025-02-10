@@ -45,8 +45,10 @@ jobs:
 
       - name: OPA Check
         run: |
-          if ! opa eval --format raw --data policies/restrict-ec2-type-t2micro.rego --input tfplan.json "data.terraform.deny" | jq 'length == 0'; then
-            echo "Policy violations found"
+          VIOLATIONS=$(opa eval --format raw --data policies/restrict-ec2-type-t2micro.rego --input tfplan.json "data.terraform.deny")
+          if [ "$VIOLATIONS" != "[]" ]; then
+            echo "Policy violations found:"
+            echo "$VIOLATIONS"
             exit 1
           fi
 
