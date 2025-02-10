@@ -6,14 +6,14 @@ variable "instances" {
   default = {
     instance1dev = {
       tags          = { "Env" : "dev" }
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
     }
     instance2qa = {
       tags = { "Env" : "qa" }
     }
     instance3prod = {
       tags          = { "Env" : "prod" }
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
     }
   }
 }
